@@ -1,5 +1,21 @@
 # ESP32 RTSP Mic for BirdNET-Go
 
+My fork at https://github.com/broswell/birdnetgo-esp32-rtsp-mic/tree/main adds two features:
+1) TCP and UDP Rtsp streams
+2) Two connections at once!
+
+I  send one copy of the stream to Birdnetgo, and another to Birdnet-pi.
+
+To make it work properly in birdnet pi I had to add the parameter -use_wallclock_as_timestamps 1 in scripts/birdnet_recording.sh:
+
+   if ! ffmpeg  -use_wallclock_as_timestamps 1 -hide_banner -xerror -loglevel $LOGGING_LEVEL -nostdin ${1} -i ${2}   -vn -map a:0 -acodec pcm_s16le -ac 2 -ar 48000 -f segment -segment_format wav -segment_time ${RECORDING_LENGTH} -strftime 1 ${RECS_DIR}
+/StreamData/%F-birdnet-RTSP_${3}-%H:%M:%S.wav
+
+Enjoy and thanks to Sukecz for creating!
+Bob
+
+
+
 This repository contains an ESP32-based I²S microphone streamer for BirdNET-Go. It runs on **Seeed XIAO ESP32-C6** with an **ICS-43434** digital microphone and exposes a mono 16-bit PCM stream over RTSP.
 
 - Latest version: `esp32_rtsp_mic_birdnetgo` (Web UI + JSON API)
