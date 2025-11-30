@@ -4,7 +4,9 @@ This repository contains an ESP32-based I²S microphone streamer for BirdNET-Go.
 
 - Latest version: `esp32_rtsp_mic_birdnetgo` (Web UI + JSON API)
 
-Key features (v1.3.0):
+Key features (v1.4.4):
+- Supports both UDP and TCP rtsp streams
+- Supports 2 streams
 - Web UI on port 80 (English/Czech) with live status, controls and settings
 - JSON API for automation/integration
 - Auto-recovery when packet rate degrades; auto/manual threshold mode
